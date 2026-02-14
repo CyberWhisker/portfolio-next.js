@@ -7,9 +7,29 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { AnimatedCount, useInView } from "@/lib/utils";
+import { useInView } from "@/lib/utils";
 import { ArrowDownRight, CheckCircle, ChevronRight, Cloud, Code2, Database, Facebook, Github, Linkedin, Mail, Palette, Sparkles } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react";
+
+// ─── Animated counter ──────────────────────────────────────────────────────
+export function AnimatedCount({ target, suffix = "" }: { target: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const { ref, isVisible } = useInView(0.3);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    let start = 0;
+    const step = target / 40;
+    const interval = setInterval(() => {
+      start += step;
+      if (start >= target) { setCount(target); clearInterval(interval); }
+      else setCount(Math.floor(start));
+    }, 25);
+    return () => clearInterval(interval);
+  }, [isVisible, target]);
+
+  return <span ref={ref}> {count}{suffix} </span>;
+}
 
 const socialLinks = [
   { icon: Github, url: "https://github.com/CyberWhisker" },

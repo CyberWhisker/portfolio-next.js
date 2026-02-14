@@ -22,23 +22,3 @@ export function useInView(threshold = 0.15) {
 
   return { ref, isVisible };
 }
-
-// ─── Animated counter ──────────────────────────────────────────────────────
-export function AnimatedCount({ target, suffix = "" }: { target: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const { ref, isVisible } = useInView(0.3);
-
-  useEffect(() => {
-    if (!isVisible) return;
-    let start = 0;
-    const step = target / 40;
-    const interval = setInterval(() => {
-      start += step;
-      if (start >= target) { setCount(target); clearInterval(interval); }
-      else setCount(Math.floor(start));
-    }, 25);
-    return () => clearInterval(interval);
-  }, [isVisible, target]);
-
-  return (`${count}  ${suffix}`);
-}
