@@ -239,62 +239,24 @@ const PROJECTS = [
 ];
 
 
+// ─── Hero ────────────────────────────────────────────────────────────────
 function Hero() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => { const t = setTimeout(() => setMounted(true), 100); return () => clearTimeout(t); }, []);
 
   return (
-    <section
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
-    >
+    <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 sm:px-12 md:px-20 overflow-hidden">
       {/* Ambient blobs */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Green glow */}
-        <div
-          className="
-                    absolute top-[10%] left-[15%] w-96 h-96 rounded-full blur-3xl
-                    opacity-20 dark:opacity-30
-                    bg-[radial-gradient(circle,#34d399,transparent_70%)]
-                    dark:bg-[radial-gradient(circle,#22c55e,transparent_70%)]
-                    "
-        />
-
-        {/* Indigo glow */}
-        <div
-          className="
-                    absolute bottom-[15%] right-[10%] w-80 h-80 rounded-full blur-3xl
-                    opacity-15 dark:opacity-25
-                    bg-[radial-gradient(circle,#6366f1,transparent_70%)]
-                    dark:bg-[radial-gradient(circle,#818cf8,transparent_70%)]
-                    "
-        />
-
-        {/* Amber glow */}
-        <div
-          className="
-                    absolute top-[60%] left-[55%] w-64 h-64 rounded-full blur-3xl
-                    opacity-10 dark:opacity-20
-                    bg-[radial-gradient(circle,#f59e0b,transparent_70%)]
-                    dark:bg-[radial-gradient(circle,#fbbf24,transparent_70%)]
-                    "
-        />
+        <div className="absolute top-[10%] left-[15%] w-72 sm:w-96 h-72 sm:h-96 rounded-full blur-3xl opacity-20 dark:opacity-30 bg-[radial-gradient(circle,#34d399,transparent_70%)] dark:bg-[radial-gradient(circle,#22c55e,transparent_70%)]" />
+        <div className="absolute bottom-[15%] right-[10%] w-64 sm:w-80 h-64 sm:h-80 rounded-full blur-3xl opacity-15 dark:opacity-25 bg-[radial-gradient(circle,#6366f1,transparent_70%)] dark:bg-[radial-gradient(circle,#818cf8,transparent_70%)]" />
+        <div className="absolute top-[60%] left-[55%] w-52 sm:w-64 h-52 sm:h-64 rounded-full blur-3xl opacity-10 dark:opacity-20 bg-[radial-gradient(circle,#f59e0b,transparent_70%)] dark:bg-[radial-gradient(circle,#fbbf24,transparent_70%)]" />
       </div>
 
       {/* Grid overlay */}
-      <div
-        className="
-                absolute 
-                inset-0 
-                pointer-events-none 
-                opacity-[0.03]
-                bg-[linear-gradient(#000_1px,transparent_1px),linear-gradient(90deg,#000_1px,transparent_1px)]
-                dark:bg-[linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)]
-                [background-size:60px_60px]
-                "
-      />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(#000_1px,transparent_1px),linear-gradient(90deg,#000_1px,transparent_1px)] dark:bg-[linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:60px_60px]" />
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        {/* Badge */}
         <div className={`inline-flex items-center gap-2 mb-8 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"} mt-5`}>
           <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 bg-emerald-500/5 px-4 py-1.5 text-sm">
             <Sparkles className="w-3.5 h-3.5 mr-2 animate-pulse" />
@@ -302,81 +264,46 @@ function Hero() {
           </Badge>
         </div>
 
-        {/* Headline */}
-        <h1
-          className={`text-6xl md:text-8xl font-bold mb-6 leading-none tracking-tight transition-all duration-800 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-          style={{ fontFamily: "'Playfair Display', serif", transitionDelay: "150ms" }}
-        >
+        <h1 className={`text-4xl sm:text-6xl md:text-8xl font-bold mb-6 leading-tight sm:leading-tight md:leading-none tracking-tight transition-all duration-800 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ fontFamily: "'Playfair Display', serif", transitionDelay: "150ms" }}>
           Hi, I'm{" "}
           <span className="relative inline-block">
-            <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: "linear-gradient(135deg, #34d399, #6366f1, #f59e0b)" }}
-            >
+            <span className="bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(135deg, #34d399, #6366f1, #f59e0b)" }}>
               Erick John Lopez
             </span>
           </span>
         </h1>
 
-        {/* Sub-headline */}
-        <p
-          className={`text-xl md:text-2xl text-zinc-400 mb-4 font-light transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-          style={{ transitionDelay: "300ms" }}
-        >
+        <p className={`text-base sm:text-xl md:text-2xl text-zinc-400 mb-4 font-light transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} style={{ transitionDelay: "300ms" }}>
           Full-Stack Developer &amp; Creative Problem Solver
         </p>
 
-        {/* Short bio */}
-        <p
-          className={`text-zinc-500 max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-          style={{ transitionDelay: "450ms" }}
-        >
+        <p className={`text-zinc-500 max-w-md sm:max-w-2xl mx-auto mb-10 leading-relaxed transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} style={{ transitionDelay: "450ms" }}>
           I craft elegant digital experiences with clean code and thoughtful design.
           Passionate about building products that are fast, accessible, and beautifully intuitive.
         </p>
 
-        {/* CTA Buttons */}
-        <div
-          className={`flex flex-wrap items-center justify-center gap-4 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-          style={{ transitionDelay: "600ms" }}
-        >
-          <a href="#projects">
-            <Button
-              size="lg"
-              className="px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105 "
-            >
+        <div className={`flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} style={{ transitionDelay: "600ms" }}>
+          <a href="#projects" className="w-full sm:w-auto">
+            <Button size="lg" className="w-full sm:w-auto px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105">
               View My Work <ArrowDownRight className="w-4 h-4 ml-2" />
             </Button>
           </a>
-          <a href="/files/CV.pdf" download="EJ_Lopez_CV.pdf" >
-            <Button
-              variant="outline"
-              size="lg"
-              className="py-3 rounded-full transition-all duration-300 hover:scale-105 bg-transparent"
-            >
+          <a href="/files/CV.pdf" download="EJ_Lopez_CV.pdf" className="w-full sm:w-auto">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto py-3 rounded-full transition-all duration-300 hover:scale-105 bg-transparent">
               Download CV
             </Button>
           </a>
         </div>
 
-        {/* Social links */}
-        <div
-          className={`flex items-center justify-center gap-5 mt-14 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-          style={{ transitionDelay: "750ms" }}
-        >
+        <div className={`flex flex-wrap items-center justify-center gap-5 mt-14 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`} style={{ transitionDelay: "750ms" }}>
           {socialLinks.map((link, i) => (
-            <a
-              key={i}
-              href={link.url}
-              className="p-3 rounded-full border border-zinc-800 text-zinc-500 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300 hover:scale-110 hover:bg-emerald-500/5"
-            >
+            <a key={i} href={link.url} className="p-3 rounded-full border border-zinc-800 text-zinc-500 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300 hover:scale-110 hover:bg-emerald-500/5">
               <link.icon className="w-5 h-5" />
             </a>
           ))}
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-600 text-xs uppercase tracking-widest animate-bounce">
         <span>Scroll</span>
         <div className="w-px h-8 bg-gradient-to-b from-transparent to-emerald-500" />
@@ -393,7 +320,7 @@ function About() {
         {/* Section label */}
         <div className="flex items-center gap-3 mb-4">
           <span className="text-emerald-400 text-sm font-mono">01</span>
-          <Separator className="w-12 bg-emerald-500/40" />
+          <Separator className="w-full bg-emerald-500/40" />
           <span className="text-emerald-400 text-sm font-mono uppercase tracking-widest">About Me</span>
         </div>
 

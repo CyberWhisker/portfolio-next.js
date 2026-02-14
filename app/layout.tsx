@@ -37,7 +37,7 @@ export default function RootLayout({ children }: Props) {
             disableTransitionOnChange
           >
             <AppHeader />
-            <div className="p-5 px-50">
+            <div className="xl:p-5 xl:px-50">
               {children}
             </div>
           </ThemeProvider>
